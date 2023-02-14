@@ -3,19 +3,22 @@ const User=require("../Model/auth.model");
 const bcrypt=require("bcrypt");
 const registerUser=async (req,res)=>{
     try {
-        const {username,email,password}=req.body;
+        const {name,email,password}=req.body;
         const saltRounds=5;
+        const user=await User.findOne({email});
+        if(user)res.status(200).send({message:"Already exists",error:false});
+        else{
         bcrypt.hash(password, saltRounds,async (err, hashed_password) =>{
             if(err){       
              res.status(500).send({message:err.message,error:true});
               }
             else {
-                const user= await new User({username,email,password:hashed_password});
+                const user= await new User({name,email,password:hashed_password});
                 user.save();
                 res.status(200).send({message:"Registered Successfully",error:false});
             }
         });
-        
+    }
     } catch (error) {
         res.status(500).send({message:error.message,error:true});
     }
