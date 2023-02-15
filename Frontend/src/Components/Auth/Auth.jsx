@@ -19,11 +19,8 @@ const Auth = () => {
     </div>
     <div id={toggel?style.signup:style.login}> 
     {
-        toggel?<Signup />:<Login />
-    }
-    
-   
-    
+        toggel?<Signup setToggel={setToggel} />:<Login setToggel={setToggel} />
+    }  
     </div>
    
 

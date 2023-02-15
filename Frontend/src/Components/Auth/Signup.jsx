@@ -1,3 +1,4 @@
+import { Heading } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { signupApi } from '../../api'
 import style from "./Auth.module.css"
@@ -6,7 +7,7 @@ const init={
     email:"",
     password:""
 }
-const Signup = () => {
+const Signup = ({setToggel}) => {
     const [creds,setCreds]=useState(init)
     const changeHandler=(e)=>{
     const {name,value}=e.target;
@@ -19,15 +20,15 @@ const Signup = () => {
      try {
          const res=await signupApi(creds);
          alert(res.data.message)
+         setToggel(false);
         } catch (error) {
-            
-        //  alert(res.data.message)
+          alert(error.response.data.message) 
      }
 
     }
   return (
     <div id={style.form}>
-    <h1 className={style.formHeading}>Signup</h1> 
+   <Heading>Signup</Heading>
    <form onSubmit={submitHandler}>
    <label>Name</label>
    <input type="text" name='name' required onChange={changeHandler}/>    
@@ -37,6 +38,9 @@ const Signup = () => {
    <input type="password" name='password' required onChange={changeHandler}/> 
    <input type="submit" value="Signup" />   
    </form>
+   <div class={style.formobile}>
+    <p>Have an account?<span onClick={()=>setToggel(false)}>Login</span></p>
+   </div>
     </div>
   )
 }

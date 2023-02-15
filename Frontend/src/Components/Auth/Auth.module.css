@@ -1,7 +1,6 @@
 #authcont{
     height: 100vh;
-    width: 100%;
-   
+    width: 100%;  
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,31 +15,33 @@
 #left,#right{
     width: 100%;
     display: flex;
+    font-size:20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;  
 }
 .authbtn{
  color: #fff; 
-  border: 1px solid #b2aeae;
+  border: 1px solid rgb(199, 194, 194);
   background: transparent;
   font-size: 16px;
   padding: 8px 30px;
   cursor: pointer;
 }
 #signup,#login{
+    padding: 20px;
     position: absolute;
     top: 100px;
     height: 470px;
-    width: 30%;
+    width:350px;
     background: #fff;
   
 }
 #signup{
-    left: 240px;
+    left: 18%;
 }
 #login{
-    right: 240px;
+    right: 18%;
 }
 .formHeading{
     color: #000
@@ -57,15 +58,71 @@ form>input{
     border-radius: 10px;
 }
 input[type="submit"]{
+    border: 0px;
     background: #000;
     color: #fff;
     padding: 10px 30px;
+    cursor: pointer;
 }
 #form{
-    height: 400px;
+    height: 420px;
     display: flex;
-    gap: 20px;
+    gap: 15px;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;  
+}
+.formobile{
+    display: none;
+}
+.formobile span{
+    cursor: pointer;
+    color:rgb(65, 22, 192)
+}
+
+@media all and (min-width:690px) and (max-width:950px){
+    #auth{
+        width: 95%;
+    } 
+    #signup{
+        left: 5%;
+    }
+    #login{
+        right: 5%;
+    }
+}
+@media all and (min-width:375px) and (max-width:689px){
+    #auth{
+    display: none;
+    } 
+    #left,#right{
+        display: none;
+    }
+    #signup,#login{
+        position: static;
+        margin: auto;
+    }
+    .formobile{
+        font-size: 18px;
+        margin-top:-20px ;
+        display: block;
+    }
+}
+@media all and (min-width:60px) and (max-width:374px){
+    #auth{
+    display: none;
+    } 
+    #left,#right{
+        display: none;
+    }
+    #signup,#login{
+        position: static;
+        margin: auto;
+        width: 98%;
+    }
+    input{
+        width:80%;
+    }
+    .formobile{
+        display: block;
+    }
 }
