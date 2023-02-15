@@ -1,10 +1,10 @@
 import React from 'react'
-import Auth from './Components/Auth/Auth'
 import "./App.css"
+import AllRoutes from './Components/AllRoutes'
 const App = () => {
   return (
-    <div id='root'>
-      <Auth />
+    <div id='App'>
+      <AllRoutes />
     </div>
   )
 }
