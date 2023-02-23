@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL="http://localhost:8080" 
+const BASE_URL="https://quizester.onrender.com" 
 import { QUIZ_ERROR, QUIZ_LOADING, QUIZ_SUCCESS } from "./quiz.type";
 export const getQuestion=(type,level,limit)=>async(dispatch)=>{
     try {
