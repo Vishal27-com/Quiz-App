@@ -3,7 +3,8 @@ const userSchema=new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true},
     password:{type:String,required:true},
-    score_detail:{type:String}
+    isAdmin:{type:Boolean,required:true,default:false},
+    image:{type:String}
 })
 const User=mongoose.model("user",userSchema);
 module.exports=User;

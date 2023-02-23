@@ -1,9 +1,9 @@
 const jwt=require("jsonwebtoken");
-const User=require("../Model/auth.model");
+const User=require("../Model/user.model");
 const bcrypt=require("bcrypt");
 const registerUser=async (req,res)=>{
     try {
-        const {name,email,password}=req.body;
+        const {name,email,password,isAdmin}=req.body;
         const saltRounds=5;
         const user=await User.findOne({email});
         if(user)res.status(200).send({message:"Already exists",error:false});
@@ -13,7 +13,7 @@ const registerUser=async (req,res)=>{
              res.status(500).send({message:err.message,error:true});
               }
             else {
-                const user= await new User({name,email,password:hashed_password});
+                const user= await new User({name,email,password:hashed_password,isAdmin});
                 user.save();
                 res.status(200).send({message:"Registered Successfully",error:false});
             }
@@ -30,8 +30,9 @@ const loginUser=async (req,res)=>{
         if(user){
             bcrypt.compare(password, user.password, (err, result)=> {
                 if(result){
-                    const token=jwt.sign({email,password},process.env.SECRET_KEY);
-                    res.cookie("access_token",token).status(200).send({message:"Login Successfully",error:false});  
+                    const token=jwt.sign({email:user.email,password:user.password},process.env.SECRET_KEY);
+                    const {password,isAdmin,...other}=user._doc;
+                    res.cookie("access_token",token).status(200).send({message:{...other,isAdmin},error:false});  
                 }
                 else{
                     res.status(401).send({message:"Invalid credential",error:true})
@@ -45,5 +46,23 @@ const loginUser=async (req,res)=>{
         res.status(500).send({message:error.message,error:true})
     }
 }
+const getUser=async (req,res)=>{
+try {
+    const user=await User.findOne({_id:req.params.id});
+    const {password,isAdmin,...other}=user._doc;
+    res.status(200).send({message:{...other,isAdmin},error:false})
+} catch (error) {
+    res.status(500).send({message:error.message,error:true})  
+}
+}
+const updateUser=async (req,res)=>{
+try {
+    await User.findByIdAndUpdate({_id:req.params.id},{$set:req.body});
+    res.status(200).send({message:"updated",error:false})
+} catch (error) {
+    res.status(500).send({message:error.message,error:true})  
+}
+}
 
-module.exports={registerUser,loginUser};
+
+module.exports={registerUser,loginUser,getUser,updateUser};
