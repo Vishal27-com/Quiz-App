@@ -1,7 +1,9 @@
 import { Box, Button, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
+import MyModal from '../Quiz Form/MyModal'
 
 const Topicard = ({image,topic}) => {
+  const [isOpen,setIsOpen]=useState(false);
   return (
    <Box p='10px'
    bg='#fff'
@@ -11,9 +13,10 @@ const Topicard = ({image,topic}) => {
    <Image src={image} alt={topic} />
    <Flex direction='column' justify='space-around'>
    <Heading size='md'>{topic} Quiz</Heading>
-   <Button variant='solid' colorScheme='blue'>Start Quiz</Button>
+   <Button variant='solid' colorScheme='blue' onClick={()=>setIsOpen(true)}>Start Quiz</Button>
    </Flex>
     </Flex>
+    <MyModal type={topic} isOpen={isOpen} setIsOpen={setIsOpen} />
    </Box>
   )
 }

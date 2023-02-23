@@ -7,9 +7,13 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 import Logo from "../Logo/Logo";
 const Navbar = () => {
+  const {isAuth,setIsAuth}=useContext(AuthContext);
+  const navigate=useNavigate();
   return (
     <Flex
       justify="space-between"
@@ -21,11 +25,11 @@ const Navbar = () => {
       <Logo />
       <Menu>
         <MenuButton as={Button} h="50px" w="50px" p="0" borderRadius="50%">
-          <Avatar name="Vishal" />
+          <Avatar name={isAuth?.user?.name} />
         </MenuButton>
         <MenuList>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Logout</MenuItem>
+          <MenuItem onClick={()=>navigate("/profile")}>Profile</MenuItem>
+          <MenuItem onClick={()=>setIsAuth({isAuth:false,user:{}})}>Logout</MenuItem>
         </MenuList>
       </Menu>
     </Flex>
