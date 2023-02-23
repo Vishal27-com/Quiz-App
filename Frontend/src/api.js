@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL="https://quizester.onrender.com/" 
+const BASE_URL="https://quizester.onrender.com" 
 export const signupApi=(creds)=>{
     return axios.post(`${BASE_URL}/auth/signup`,creds);
 }
