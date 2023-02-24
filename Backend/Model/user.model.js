@@ -5,6 +5,6 @@ const userSchema=new mongoose.Schema({
     password:{type:String,required:true},
     isAdmin:{type:Boolean,required:true,default:false},
     image:{type:String}
-})
+},{timestamps:true})
 const User=mongoose.model("user",userSchema);
 module.exports=User;

@@ -6,6 +6,6 @@ const quizSchema=new mongoose.Schema({
     answer:{type:String,required:true},
     option:{type:Array,required:true},
     // reason:{type:String,required:true}
-})
+},{timestamps:true})
 const Quiz=mongoose.model("quiz",quizSchema);
 module.exports=Quiz;
