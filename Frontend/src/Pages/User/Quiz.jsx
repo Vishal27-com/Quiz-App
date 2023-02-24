@@ -9,14 +9,17 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Timer from "../../Components/Timer/Timer";
 import {useNavigate} from "react-router-dom"
 import { resultMaker } from "../../Components/ResultMaker/resultMaker";
 import { QUIZ_RESULT } from "../../Redux/Quiz/quiz.type";
+import { postResultApi } from "../../api";
+import { AuthContext } from "../../Context/AuthContext";
 const Quiz = () => {
   const { loading, error, question } = useSelector((store) => store.quiz);
+  const {isAuth}=useContext(AuthContext);
   const [index,setIndex]=useState(0);
   const [answer,setAnswer]=useState([]);
   const [choosen,setChoosen]=useState("");
@@ -32,10 +35,17 @@ const Quiz = () => {
     setChoosen("");
     setIndex(index=>index+1)
   }
-  const submitHandler=()=>{
-    setAnswer([...answer,choosen])
+  const submitHandler=async ()=>{
+    answer.push(choosen)
    let result=resultMaker(question,answer)
    dispatch({type:QUIZ_RESULT,payload:result})
+   const data={
+    userId:isAuth.user._id,
+    type:question[0].type,
+    level:question[0].level,
+    score:`${result.correct_answer}/${question.length}`
+   }
+  await postResultApi(data)
    navigate("/result")
   }
   return (
@@ -63,6 +73,7 @@ const Quiz = () => {
               boxShadow="0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)"
               p="20px"
               spacing={5}
+              minWidth='300px'
               >
                 {
               <Text fontSize="20px" mb="20px">

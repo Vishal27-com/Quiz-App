@@ -1,13 +1,16 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Center } from '@chakra-ui/react';
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import ResultTable from '../../Components/ResultTable/ResultTable';
 
 const Result = () => {
-    const {result } = useSelector((store) => store.quiz);
-    console.log(result);
+const navigate=useNavigate();
   return (
     <Box>
-        
+       <ResultTable /> 
+       <Center>
+       <Button variant='solid' colorScheme='blue' onClick={()=>navigate("/dashboard")}>Go To Dashboard</Button>
+       </Center>
     </Box>
   )
 }

@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div>
        <Navbar />
-       <SimpleGrid w='90%' m='40px auto' columns={3} spacing={10} >
+       <SimpleGrid w={['250px','500px','90%']} m='40px auto' columns={[1,2,2,3]} spacing={10} >
        {
         topic.map((item)=>
         <Topicard 
