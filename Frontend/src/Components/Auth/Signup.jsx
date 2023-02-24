@@ -1,6 +1,7 @@
-import { Button, Heading } from '@chakra-ui/react'
+import { Button, Heading, Text, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { signupApi } from '../../api'
+import MyAlert from '../MyAlert/MyAlert'
 import style from "./Auth.module.css"
 const init={
     name:"",
@@ -8,6 +9,8 @@ const init={
     password:""
 }
 const Signup = ({setToggel}) => {
+  const toast = useToast()
+    const [loading,setLoading]=useState(false);
     const [creds,setCreds]=useState(init)
     const changeHandler=(e)=>{
     const {name,value}=e.target;
@@ -18,11 +21,13 @@ const Signup = ({setToggel}) => {
     const submitHandler=async (e)=>{
      e.preventDefault();
      try {
+         setLoading(true);
          const res=await signupApi(creds);
-         alert(res.data.message)
+         setLoading(false);
+         MyAlert(res.data.message,'success',toast)
          setToggel(false);
         } catch (error) {
-          alert(error.response.data.message) 
+          MyAlert(error.response.data.message,'success',toast)
      }
 
     }
@@ -36,10 +41,10 @@ const Signup = ({setToggel}) => {
    <input type="email" name='email' required onChange={changeHandler}/>    
    <label>Password</label>
    <input type="password" name='password' required onChange={changeHandler}/> 
-   <Button variant='solid' colorScheme='green' onClick={submitHandler}>Login</Button> 
+   <Button isLoading={loading} variant='solid' colorScheme='green' onClick={submitHandler}>Signup</Button> 
    </form>
-   <div class={style.formobile}>
-    <p>Have an account?<span onClick={()=>setToggel(false)}>Login</span></p>
+   <div className={style.formobile}>
+    <Text mt='20px'>Have an account?<span onClick={()=>setToggel(false)}>Login</span></Text>
    </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { Text } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react'
+import timeConverter from '../TimeConverter/timeConverter';
 
 const Timer = ({stopQuiz,duration}) => {
     const [time, setTime] = useState(duration*30);
@@ -15,9 +16,8 @@ const Timer = ({stopQuiz,duration}) => {
         return () => clearInterval(ref.current);
       }
     }, [time]);
-    console.log(time)
   return (
-    <Text>{time}</Text>
+    <Text>{timeConverter(time)}</Text>
     )
 }
 

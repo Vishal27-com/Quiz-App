@@ -10,19 +10,25 @@ import {
     Select,
     Stack,
   } from '@chakra-ui/react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom"
 import {useDispatch} from "react-redux"
 import { getQuestion } from '../../Redux/Quiz/quiz.action';
+import timeConverter from '../TimeConverter/timeConverter';
 function MyModal({type,isOpen,setIsOpen}) {
     const [level,setLevel]=useState("");
     const dispatch=useDispatch()
     const [limit,setLimit]=useState(0);
+    const [duration,setDuration]=useState(0);
     const navigate=useNavigate()
     const submitHandler= ()=>{
        dispatch(getQuestion(type.toLowerCase(),level,limit))
        navigate("/quiz");
     }
+    // useEffect(()=>{
+    //   let time=timeConverter(limit*30)
+    //    setDuration(time)
+    // },[limit])
     return (
       <>  
         <Modal isOpen={isOpen}>
@@ -30,7 +36,7 @@ function MyModal({type,isOpen,setIsOpen}) {
           <ModalContent>
             <ModalHeader>{type} Quiz Form</ModalHeader>
             <ModalBody>
-                <Stack>
+                <Stack fontWeight='600'>
 
            <Text>Level</Text>    
     <Select name='level' onChange={(e)=>setLevel(e.target.value)}>
@@ -42,14 +48,12 @@ function MyModal({type,isOpen,setIsOpen}) {
            <Text>Limit</Text>    
     <Select name='limit' onChange={(e)=>setLimit(Number(e.target.value))}>
         <option value="">Limit</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+        <option value={15}>15</option>
     </Select>
-           <Text>Duration:{Number(limit)*30}sec</Text>    
+           <Text>Duration: {timeConverter(limit*30)}</Text>    
                 </Stack>
-    
-
             </ModalBody>
   
             <ModalFooter>
