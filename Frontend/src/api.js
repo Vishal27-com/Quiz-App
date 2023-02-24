@@ -18,3 +18,9 @@ export const postQuestionApi=(data)=>{
 export const getQuestionApi=(type,level,limit)=>{
     return axios.get(`${BASE_URL}/quiz/?type=${type}&level=${level}&limit=${limit}`);
 }
+export const postResultApi=(data)=>{
+    return axios.post(`${BASE_URL}/result`,data);
+}
+export const getResultApi=(id)=>{
+    return axios.get(`${BASE_URL}/result/${id}`);
+}
