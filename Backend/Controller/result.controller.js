@@ -11,7 +11,7 @@ try {
 }
 const getResults=async (req,res)=>{
     try {
-        const results=await Result.find({userId:req.params.id});
+        const results=await Result.find({userId:req.params.userId});
         res.status(200).send({message:results,error:false});
     } catch (error) {
         res.status(500).send({message:error.message,error:true})
