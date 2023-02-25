@@ -3,6 +3,6 @@ const { postResult, getResults, deleteResult, leaderBoardResult } = require("../
 const app=express.Router();
 app.post("/",postResult)
 app.get("/:userId",getResults)
-app.get("/leaderboard",leaderBoardResult)
+app.get("/",leaderBoardResult)
 app.delete("/:id",deleteResult)
 module.exports=app;
