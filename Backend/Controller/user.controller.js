@@ -55,6 +55,14 @@ try {
     res.status(500).send({message:error.message,error:true})  
 }
 }
+const getAllUser=async (req,res)=>{
+try {
+    const users=await User.find();
+    res.status(200).send({message:users,error:false})
+} catch (error) {
+    res.status(500).send({message:error.message,error:true})  
+}
+}
 const updateUser=async (req,res)=>{
 try {
     await User.findByIdAndUpdate({_id:req.params.id},{$set:req.body});
@@ -63,6 +71,14 @@ try {
     res.status(500).send({message:error.message,error:true})  
 }
 }
+const deleteUser=async (req,res)=>{
+try {
+    await User.findByIdAndRemove(req.params.id);
+    res.status(200).send({message:"updated",error:false})
+} catch (error) {
+    res.status(500).send({message:error.message,error:true})  
+}
+}
 
 
-module.exports={registerUser,loginUser,getUser,updateUser};
+module.exports={registerUser,loginUser,getUser,getAllUser,updateUser,deleteUser};

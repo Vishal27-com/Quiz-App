@@ -25,4 +25,16 @@ const deleteResult=async (req,res)=>{
         res.status(500).send({message:error.message,error:true})
     }
 }
-module.exports={postResult,getResults,deleteResult};
+const leaderBoardResult=async (req,res)=>{
+    try{
+       let results= await Result.aggregate([{$group:{
+        "userId":"$userId" , score:{$sum:"$score"} , mm:{$sum:"$mm"}
+    }},
+   {$sort:{score:-1}}
+])
+        res.status(200).send({message:results,error:false});
+    }catch (error) {
+        res.status(500).send({message:error.message,error:true})
+    }
+}
+module.exports={postResult,getResults,deleteResult,leaderBoardResult};
