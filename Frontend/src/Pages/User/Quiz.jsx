@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Center,
-  Checkbox,
   Flex,
   Radio,
   RadioGroup,
@@ -43,7 +42,8 @@ const Quiz = () => {
     userId:isAuth.user._id,
     type:question[0].type,
     level:question[0].level,
-    score:`${result.correct_answer}/${question.length}`
+    score:result.correct_answer*4,
+    mm:question.length*4
    }
   await postResultApi(data)
    navigate("/result")

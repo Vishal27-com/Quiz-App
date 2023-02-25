@@ -24,3 +24,6 @@ export const postResultApi=(data)=>{
 export const getResultApi=(id)=>{
     return axios.get(`${BASE_URL}/result/${id}`);
 }
+export const getLeaderBoardApi=()=>{
+    return axios.get(`${BASE_URL}/result`);
+}

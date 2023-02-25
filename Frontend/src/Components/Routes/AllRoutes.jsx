@@ -8,6 +8,7 @@ import AdminRoutes from "./AdminRoutes";
 import Profile from "../../Pages/User/Profile";
 import Quiz from "../../Pages/User/Quiz";
 import Result from "../../Pages/User/Result";
+import LeaderBoard from "../../Pages/User/LeaderBoard";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -17,6 +18,7 @@ const AllRoutes = () => {
       <Route path="/profile" element={<UserRoutes><Profile /></UserRoutes>} />
       <Route path="/quiz" element={<UserRoutes><Quiz /></UserRoutes>} />
       <Route path="/result" element={<UserRoutes><Result /></UserRoutes>} />
+      <Route path="/leaderboard" element={<UserRoutes><LeaderBoard /></UserRoutes>} />
     </Routes>
   );
 };

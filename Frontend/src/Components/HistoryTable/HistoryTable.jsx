@@ -10,7 +10,7 @@ const HistoryTable = ({results}) => {
         <Th>Type</Th>
         <Th>Level</Th>
         <Th>Score</Th>
-        <Th>Time</Th>
+        {/* <Th>Time</Th> */}
       </Tr>
     </Thead>
     <Tbody>
@@ -19,8 +19,8 @@ const HistoryTable = ({results}) => {
         <Tr>
           <Td>{item.type.toUpperCase()}</Td>
           <Td>{item.level}</Td>
-          <Td>{item.score}</Td>
-          <Td>24-02-03</Td>
+          <Td>{item.score}/{item.mm}</Td>
+          {/* <Td>{item.createdAt}</Td> */}
         </Tr>
         )
       }

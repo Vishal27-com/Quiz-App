@@ -10,7 +10,6 @@ const {isAuth}=useContext(AuthContext);
 const [results,setResults]=useState([])
 const getResult=async ()=>{
   let res=await getResultApi(isAuth?.user?._id)
-  console.log(res)
   setResults(res.data.message)
 }
  useEffect(()=>{

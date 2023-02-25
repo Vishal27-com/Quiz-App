@@ -29,6 +29,7 @@ const Navbar = () => {
         </MenuButton>
         <MenuList>
           <MenuItem onClick={()=>navigate("/profile")}>Profile</MenuItem>
+          <MenuItem onClick={()=>navigate("/leaderboard")}>LeaderBoard</MenuItem>
           <MenuItem onClick={()=>setIsAuth({isAuth:false,user:{}})}>Logout</MenuItem>
         </MenuList>
       </Menu>
