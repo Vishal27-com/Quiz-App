@@ -1,11 +1,14 @@
+import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
+import Sidebar from '../../Components/Sidebar/Sidebar'
 import Question from './Question'
 
 const Admin = () => {
   return (
-    <div>
+    <Box>
+       <Sidebar />
        <Question />
-    </div>
+    </Box>
   )
 }
 

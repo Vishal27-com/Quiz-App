@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext';
@@ -10,7 +11,7 @@ const AdminRoutes = ({children}) => {
     if(!isAuth?.user.isAdmin){
         return <Navigate to='/dashboard' />
     }
-   return children;
+   return children 
 }
 
 export default AdminRoutes

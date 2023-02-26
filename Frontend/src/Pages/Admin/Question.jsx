@@ -1,6 +1,7 @@
-import { Box, Button, Center, Flex, Select, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Flex, Select, Stack, Text, useToast } from '@chakra-ui/react'
 import { useState } from 'react'
 import { postQuestionApi } from '../../api';
+import MyAlert from '../../Components/MyAlert/MyAlert';
 const init={
     type:"",
     level:"",
@@ -18,24 +19,30 @@ const Question = () => {
         [name]:value
     })
     }
+    const toast =useToast();
     const optionHandler=()=>{
             setForm({
                 ...form,
                 option:[...form.option,option]
             })
+            MyAlert(`Option Added`,'success',toast)
+
     }
     const submitHandler=async ()=>{
       
       try{
           const res=await postQuestionApi(form);
-          alert(res.data.message);
-      }catch(error){
-        alert(error.response.data.message)
+          MyAlert(res.data.message,'success',toast)
+        }catch(error){
+          MyAlert(error.response.data.message,'error',toast)
       }
 
     }
     return (
-        <Box fontWeight='600' w='50%' m='auto' bg='#fff' p='10px'>
+        <Box fontWeight='600' w='50%' m='auto' bg='#fff' p='10px'
+        boxShadow='0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
+        borderRadius='10px'
+        >
         <Stack>
          <Center>
         <Text>Add Question</Text>    
@@ -55,11 +62,11 @@ const Question = () => {
         <option value="hard">Hard</option>
     </Select>
         <Text>Question</Text>    
-    <textarea name='question' style={{display:"block",width:'100%'}} onChange={changeHandler}></textarea>
+    <textarea name='question' style={{display:"block",width:'100%',padding:"10px"}} onChange={changeHandler}></textarea>
         <Text>Answer</Text>    
-    <textarea name='answer' style={{display:"block",width:'100%'}} onChange={changeHandler}></textarea>
+    <textarea name='answer' style={{display:"block",width:'100%',padding:"10px"}} onChange={changeHandler}></textarea>
         <Text>Options</Text>    
-    <textarea name='option' style={{display:"block",width:'100%'}} onChange={(e)=>setOption(e.target.value)}></textarea>
+    <textarea name='option' style={{display:"block",width:'100%',padding:"10px"}} onChange={(e)=>setOption(e.target.value)}></textarea>
     <Flex justify='flex-end'>
     <Button variant='solid' mt='15px' colorScheme='green' disabled={form.option.length===3} onClick={optionHandler}>Add Options</Button>  
     </Flex>
