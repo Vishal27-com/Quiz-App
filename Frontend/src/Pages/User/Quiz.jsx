@@ -5,6 +5,7 @@ import {
   Flex,
   Radio,
   RadioGroup,
+  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -51,7 +52,15 @@ const Quiz = () => {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+       <Flex justify='center' align='center' h='100vh'>
+      <Spinner
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray.200'
+        color='blue.500'
+        size='xl'
+        />
+        </Flex> 
       ) : error ? (
         <h1>Something went wrong</h1>
       ) : (

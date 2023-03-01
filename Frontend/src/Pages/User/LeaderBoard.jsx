@@ -1,10 +1,10 @@
 import { Box, Button, Center } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react'
-import { getLeaderBoardApi } from '../../api';
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import BoardTable from '../../Components/LeaderBoardTable/BoardTable';
 
 const LeaderBoard = () => {
-   
+   const navigate=useNavigate();
   return (
     <Box>
      <BoardTable />
