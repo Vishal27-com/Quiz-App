@@ -57,8 +57,18 @@ try {
 }
 const getAllUser=async (req,res)=>{
 try {
-    const users=await User.find();
-    res.status(200).send({message:users,error:false})
+    const {filterby,sortby,page,limit}=req.query;
+    const sortval=sortby==="asc"?1:-1
+    const count=await User.count();
+    let users;
+    if(filterby==="both"){
+     users=await User.find({}).sort({createdAt:sortval}).skip((page-1)*limit).limit(limit);
+    }
+    else {
+        const filterval=filterby==="user"?false:true
+    users=await User.find({isAdmin:filterval}).sort({createdAt:sortval}).skip((page-1)*limit).limit(limit);
+    }
+    res.status(200).send({message:users,count,error:false})
 } catch (error) {
     res.status(500).send({message:error.message,error:true})  
 }
