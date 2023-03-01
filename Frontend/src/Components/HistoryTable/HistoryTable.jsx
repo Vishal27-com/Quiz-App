@@ -16,7 +16,7 @@ const HistoryTable = ({results}) => {
     <Tbody>
       {
         results.map((item)=>
-        <Tr>
+        <Tr key={item.type}>
           <Td>{item.type.toUpperCase()}</Td>
           <Td>{item.level}</Td>
           <Td>{item.score}/{item.mm}</Td>

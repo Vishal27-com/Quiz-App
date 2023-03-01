@@ -56,7 +56,7 @@ const BoardTable = () => {
               </Text>
               </Flex>
               </Td>
-            <Td>{item._id.name}</Td>
+            <Td>{item.name}</Td>
             <Td>{item.marks}/{item.mm}</Td>
           </Tr>
           )

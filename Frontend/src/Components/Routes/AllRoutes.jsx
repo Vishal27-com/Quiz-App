@@ -12,6 +12,7 @@ import LeaderBoard from "../../Pages/User/LeaderBoard";
 import AllQuestions from "../../Pages/Admin/AllQuestions";
 import AllUser from "../../Pages/Admin/AllUser";
 import CreateAdmin from "../../Pages/Admin/CreateAdmin";
+import QuestionEdit from "../../Pages/Admin/QuestionEdit";
 const AllRoutes = () => {
   return (
     <Routes>
@@ -24,6 +25,7 @@ const AllRoutes = () => {
 
       <Route path="/admin" element={<AdminRoutes><Admin /></AdminRoutes>} />
       <Route path="/all-questions" element={<AdminRoutes><AllQuestions /></AdminRoutes>} />
+      <Route path="/question/:id" element={<AdminRoutes><QuestionEdit /></AdminRoutes>} />
       <Route path="/all-user" element={<AdminRoutes><AllUser /></AdminRoutes>} />
       <Route path="/create-admin" element={<AdminRoutes><CreateAdmin /></AdminRoutes>} />
     </Routes>
