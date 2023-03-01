@@ -29,7 +29,6 @@ const Question = () => {
 
     }
     const submitHandler=async ()=>{
-      
       try{
           const res=await postQuestionApi(form);
           MyAlert(res.data.message,'success',toast)
@@ -68,7 +67,7 @@ const Question = () => {
         <Text>Options</Text>    
     <textarea name='option' style={{display:"block",width:'100%',padding:"10px"}} onChange={(e)=>setOption(e.target.value)}></textarea>
     <Flex justify='flex-end'>
-    <Button variant='solid' mt='15px' colorScheme='green' disabled={form.option.length===3} onClick={optionHandler}>Add Options</Button>  
+    <Button variant='solid' mt='15px' colorScheme='green' isDisabled={form.option.length===3} onClick={optionHandler}>Add Options</Button>  
     </Flex>
     <Button variant='solid' mt='15px' colorScheme='blue' onClick={submitHandler}>Submit</Button>  
    </Stack>
