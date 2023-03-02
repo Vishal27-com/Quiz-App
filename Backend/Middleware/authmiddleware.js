@@ -1,5 +1,5 @@
 const jwt=require("jsonwebtoken")
-export const authmiddleware = (req, res, next) => {
+const authmiddleware = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) {
     return res.status(401).send({message:"You are not authenticated" ,error:true});
@@ -9,3 +9,4 @@ export const authmiddleware = (req, res, next) => {
     next();
   });
 };
+module.exports={authmiddleware};
