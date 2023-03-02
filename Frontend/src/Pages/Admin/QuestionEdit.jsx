@@ -55,7 +55,7 @@ const QuestionEdit = () => {
   }, []);
 
   return (
-    <Box fontWeight='600' w={['95%','80%','50%']} m='20px auto' bg='#fff' p='10px'
+    <Box fontWeight='600' w={['95%','80%','50%']} m='auto' bg='#fff' p='10px'
         boxShadow='0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
         borderRadius='10px'
         >
