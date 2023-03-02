@@ -8,6 +8,7 @@ const Admin = () => {
     <Box>
        <Sidebar />
        <Question />
+
     </Box>
   )
 }

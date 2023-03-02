@@ -35,9 +35,8 @@ const Signup = () => {
   return (
     <Box>
     <Sidebar />
-    <Flex justify='center' align='center' h='100vh'>
+    <Flex justify='center' align='center' h='90vh'>
     <div id={style.form}>
-   <Heading mb='20px'>New Admin</Heading>
    <form>
    <label>Name</label>
    <input type="text" name='name' required onChange={changeHandler}/>    

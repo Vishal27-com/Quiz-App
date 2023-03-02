@@ -14,7 +14,6 @@ const AllUser = () => {
   const toast=useToast();
   const getAllUser=async (filter,sort)=>{
    const res=await getAllUserApi(filter,sort,page,limit);
-   console.log(res.data.message);
    setData(res.data.message);
    setTotal(res.data.count);
   }
@@ -48,22 +47,22 @@ const AllUser = () => {
   return (
     <Box>
       <Sidebar />
-      <Flex  gap='15px' w='60%' m='auto'>
-        <Select onChange={filterHandler} w='30%'>
+      <Flex  direction={["row"]} wrap='wrap' gap='15px' justify='center' mt='20px'>
+        <Select onChange={filterHandler} w='100px' bg='#fff'>
           <option value="both">Both</option>
           <option value="user">User Only</option>
           <option value="admin">Admin Only</option>
         </Select>
-        <Select onChange={sortHandler} w='30%'>
+        <Select onChange={sortHandler} w='200px' bg='#fff'>
           <option value="desc">Latest by date</option>
           <option value="asc">Oldest by date</option>
         </Select>
       </Flex>
       <TableContainer>
-  <Table variant='styled' bg='#fff' m='20px auto' maxWidth='60%'>
+  <Table variant='styled' bg='#fff' m='20px auto' boxShadow='md' maxWidth='60%'>
     <TableCaption> 
       <HStack spacing={5}>
-    <Select onChange={limitHandler} w='40px'>
+    <Select onChange={limitHandler} w='50px' bg='#fff'>
           <option value={5}>5 per page</option>
           <option value={10}>10 per page</option>
           <option value={20}>20 per page</option>
@@ -85,7 +84,7 @@ const AllUser = () => {
         <Td>{ind+1}</Td>
         <Td>{item.name}</Td>
         <Td>{item.isAdmin?"Yes":"No"}</Td>
-        <Td><Button variant='outline' onClick={()=>deleteHandler(item._id)}>
+        <Td><Button w='50px' variant='outline' onClick={()=>deleteHandler(item._id)}>
           <Img h='20px' src='https://cdn-icons-png.flaticon.com/128/6460/6460112.png' />
           </Button></Td>
       </Tr>

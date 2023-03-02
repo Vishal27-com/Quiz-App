@@ -24,7 +24,7 @@ const Sidebar = () => {
       const {isAuth,setIsAuth}=useContext(AuthContext);
 
       return (
-        <>
+        <Box p='10px'>
           <Button ref={btnRef} variant='outline' onClick={onOpen}>
            <Hamburger toggled={false} />
           </Button>
@@ -63,7 +63,7 @@ const Sidebar = () => {
               </DrawerBody>
             </DrawerContent>
           </Drawer>
-        </>
+        </Box>
       )
     }
 

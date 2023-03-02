@@ -57,28 +57,28 @@ const AllQuestions = () => {
   return (
     <Box>
       <Sidebar />
-      <Flex  gap='15px' w='60%' m='auto'>
-        <Select onChange={typeHandler} w='30%'>
+      <Flex  direction={["row"]} wrap='wrap' gap='15px' justify='center' mt='20px'>
+        <Select onChange={typeHandler} w='100px' bg='#fff'>
           <option value="all">All</option>
           <option value="html">HTML Only</option>
           <option value="css">CSS Only</option>
         </Select>
-        <Select onChange={levelHandler} w='30%'>
+        <Select onChange={levelHandler} w='100px' bg='#fff'>
           <option value="all">All</option>
           <option value="hard">Hard</option>
           <option value="medium">Medium</option>
           <option value="easy">Easy</option>
         </Select>
-        <Select onChange={sortHandler} w='30%'>
+        <Select onChange={sortHandler} w='200px' bg='#fff'>
           <option value="asc">Oldest by date</option>
           <option value="desc">Latest by date</option>
         </Select>
       </Flex>
       <TableContainer>
-  <Table variant='styled' bg='#fff' m='20px auto' maxWidth='60%'>
+  <Table variant='styled' bg='#fff' m='20px auto' maxWidth='60%' boxShadow='md'>
     <TableCaption>
-    <HStack spacing={7}>
-    <Select onChange={limitHandler} w='30px'>
+    <HStack spacing={5}>
+    <Select onChange={limitHandler} w='50px' bg='#fff'>
           <option value={5}>5 per page</option>
           <option value={10}>10 per page</option>
           <option value={20}>20 per page</option>
@@ -94,7 +94,7 @@ const AllQuestions = () => {
         <Th>Level</Th>
       </Tr>
     </Thead>
-    <Tbody>
+    <Tbody >
      {
       data.map((item,ind)=>
       <Tr key={item._id}>
@@ -104,13 +104,13 @@ const AllQuestions = () => {
         <Td>{item.level}</Td>
         <Td> 
           <Link to={`/question/${item._id}`}>
-        <Button size='sm'  variant='outline'>
+        <Button size='sm' w='50px'  variant='outline'>
           <Img h='20px' src='https://cdn-icons-png.flaticon.com/128/1160/1160758.png' />
         </Button>
           </Link>
         </Td>
         <Td>
-        <Button size='sm' variant='outline' onClick={()=>deleteHandler(item._id)}>
+        <Button size='sm' w='50px' variant='outline' onClick={()=>deleteHandler(item._id)}>
           <Img h='20px' src='https://cdn-icons-png.flaticon.com/128/6460/6460112.png' />
         </Button>
         </Td>
