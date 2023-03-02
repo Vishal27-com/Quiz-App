@@ -33,7 +33,7 @@ const loginUser=async (req,res)=>{
                 if(result){
                     const token=jwt.sign({email:user.email,password:user.password},process.env.SECRET_KEY);
                     const {password,isAdmin,...other}=user._doc;
-                    res.cookie("access_token",token).status(200).send({message:{...other,isAdmin},error:false});  
+                    res.cookie("access_token",token,{httpOnly: true}).status(200).send({message:{...other,isAdmin},error:false});  
                 }
                 else{
                     res.status(401).send({message:"Invalid credential",error:true})

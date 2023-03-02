@@ -17,6 +17,6 @@ app.use("/auth",authRouter);
 app.use("/quiz",quizRouter);
 app.use("/result",resultRouter);
 dbConnect();
-app.listen(8080, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log("server started on port 8080");
 });
