@@ -1,6 +1,6 @@
 const express=require("express");
 const { postQuestion, getQuestions, updateQuestion, deleteQuestion, getAllQuestions, getQuestionById } = require("../Controller/quiz.controller");
-const { authmiddleware } = require("../Middleware/Authmiddleware");
+const { authmiddleware } = require("../Middleware/authmiddleware");
 const app=express.Router();
 app.use(authmiddleware);
 app.post("/",postQuestion)

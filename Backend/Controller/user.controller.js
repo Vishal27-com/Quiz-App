@@ -1,5 +1,6 @@
 const jwt=require("jsonwebtoken");
 const User=require("../Model/user.model");
+const Result = require("../Model/result.model");
 const bcrypt=require("bcrypt");
 const registerUser=async (req,res)=>{
     try {
@@ -84,7 +85,8 @@ try {
 const deleteUser=async (req,res)=>{
 try {
     await User.findByIdAndRemove(req.params.id);
-    res.status(200).send({message:"updated",error:false})
+    await Result.findByIdAndRemove(req.params.id);
+    res.status(200).send({message:"Deleted",error:false})
 } catch (error) {
     res.status(500).send({message:error.message,error:true})  
 }

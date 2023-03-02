@@ -1,6 +1,6 @@
 const express=require("express");
 const { postResult, getResults, deleteResult, leaderBoardResult } = require("../Controller/result.controller");
-const { authmiddleware } = require("../Middleware/Authmiddleware");
+const { authmiddleware } = require("../Middleware/authmiddleware");
 const app=express.Router();
 app.use(authmiddleware);
 app.post("/",postResult)
