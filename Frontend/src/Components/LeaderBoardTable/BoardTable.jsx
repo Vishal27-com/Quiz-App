@@ -9,6 +9,7 @@ const BoardTable = () => {
     const res=await getLeaderBoardApi();
     tellRank(res.data.message);
     setData(res.data.message);
+    console.log(res.data.message[0]._id.name);
     }
     function tellRank(data){
         let rank=0;
@@ -56,7 +57,7 @@ const BoardTable = () => {
               </Text>
               </Flex>
               </Td>
-            <Td>{item.name}</Td>
+            <Td>{item._id.name}</Td>
             <Td>{item.marks}/{item.mm}</Td>
           </Tr>
           )
