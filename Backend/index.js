@@ -9,7 +9,7 @@ const quizRouter=require("./Routes/quiz.routes");
 const resultRouter=require("./Routes/result.routes");
 
 app.use(cors({
-  origin: 'https://quizester.netlify.app/',
+  origin: 'https://quizester.netlify.app',
 }))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
