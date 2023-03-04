@@ -1,5 +1,6 @@
 import axios from "axios";
 const BASE_URL="https://quizester.onrender.com" 
+axios.defaults.withCredentials = true
 export const signupApi=(creds)=>{
     return axios.post(`${BASE_URL}/auth/signup`,creds);
 }
