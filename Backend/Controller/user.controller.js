@@ -33,7 +33,15 @@ const loginUser=async (req,res)=>{
                 if(result){
                     const token=jwt.sign({email:user.email,password:user.password},process.env.SECRET_KEY);
                     const {password,isAdmin,...other}=user._doc;
-                    res.cookie("access_token",token,{httpOnly: true}).status(200).send({message:{...other,isAdmin},error:false});  
+                    let cookieOptions = {
+                        httpOnly : false,
+                        maxAge:900000,
+                        origin: "https://quizester.netlify.app",
+                        sameSite : 'none',
+                        secure:true
+                    }
+                    res.cookie('access_token', token, cookieOptions)
+                    res.status(200).send({message:{...other,isAdmin},error:false});  
                 }
                 else{
                     res.status(401).send({message:"Invalid credential",error:true})

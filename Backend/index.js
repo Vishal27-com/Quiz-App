@@ -8,12 +8,18 @@ const authRouter=require("./Routes/user.routes");
 const quizRouter=require("./Routes/quiz.routes");
 const resultRouter=require("./Routes/result.routes");
 
-app.use(cors({
-  origin: 'https://quizester.netlify.app',
-}))
+const corsConfig = {
+  origin: "https://quizester.netlify.app",
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
+  credentials: true,
+  exposedHeaders: ['*', 'Authorization' ]
+}
+
+app.use(cors(corsConfig))
+app.use(cookieParser());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cookieParser());
 app.get("/", (req, res) => res.send("Welcome To Quiz App Server"));
 app.use("/auth",authRouter);
 app.use("/quiz",quizRouter);
