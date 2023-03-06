@@ -41,26 +41,26 @@
 ### Pages-
 #### User panel-
 #### Signup Page
-
+![Signup Page](./Readme%20Image/Q-Signup.png)
 #### Login Page
-
+![Login Page](./Readme%20Image/Q-Login.png)
 #### Dashboard
-
+![Dashboard](./Readme%20Image/Q-Dashboard.png)
 #### Quiz Page
-
+![Quiz Page](./Readme%20Image/Q-Quiz.png)
 #### Result Page
-
+![Result Page](./Readme%20Image/Q-Result.png)
 #### Leaderboard Page
-
+![Leaderboard Page](./Readme%20Image/Q-Leaderboard.png)
 #### Profile Page
-
+![Profile Page](./Readme%20Image/Q-Profile.png)
 ### Admin Panel-
 #### Add Question
-
+![Add Question Page](./Readme%20Image/Q-Add%20Question.png)
 #### All Questions
-
+![All Questions Page](./Readme%20Image/Q-All%20Question.png)
 #### New Admin
-
+![New Admin Page](./Readme%20Image/Q-New%20Admin.png)
 #### All Users
-
+![All Users Page](./Readme%20Image/Q-All%20users.png)
 
