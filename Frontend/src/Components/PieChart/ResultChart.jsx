@@ -60,7 +60,7 @@ const needle = (value, data, cx, cy, iR, oR, color) => {
           </Pie>
           {needle(value, data, cx, cy, iR, oR, '#d0d000')}
         </PieChart>
-        <Text fontSize='20px'>Percentage:{percentage}%</Text>
+        <Text fontSize='20px'>Percentage:{percentage.toFixed(2)}%</Text>
         <Text fontSize='20px'>Status:{status}</Text>
         </Box>
       );
