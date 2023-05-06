@@ -24,7 +24,7 @@ app.get("/", (req, res) => res.send("Welcome To Quiz App Server"));
 app.use("/auth",authRouter);
 app.use("/quiz",quizRouter);
 app.use("/result",resultRouter);
-dbConnect();
 app.listen(process.env.PORT, () => {
+  dbConnect();
   console.log("server started on port 8080");
 });
