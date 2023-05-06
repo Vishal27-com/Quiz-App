@@ -1,7 +1,7 @@
 const mongoose =require("mongoose");
-const dbConnect=async()=>{
+const dbConnect=()=>{
     try {
-        await mongoose.connect(process.env.DB_URI);
+        mongoose.connect(process.env.DB_URI, { useNewUrlParser: true });
         console.log("Database Connected");
     } catch (error) {
         console.log(error.message);
