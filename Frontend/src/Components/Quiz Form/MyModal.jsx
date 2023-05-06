@@ -48,9 +48,9 @@ function MyModal({type,isOpen,setIsOpen}) {
            <Text>Limit</Text>    
     <Select name='limit' onChange={(e)=>setLimit(Number(e.target.value))}>
         <option value="">Limit</option>
+        <option value={2}>2</option>
         <option value={5}>5</option>
         <option value={10}>10</option>
-        <option value={15}>15</option>
     </Select>
            <Text>Duration: {timeConverter(limit*30)}</Text>    
                 </Stack>
